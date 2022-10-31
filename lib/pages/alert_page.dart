@@ -90,6 +90,101 @@ will be able to edit this post and republish changes."""),
     );
   }
 
+  showMyAlert3(BuildContext context) {
+    AwsScreenSize(context);
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+          ),
+          icon: Container(
+              alignment: Alignment.center,
+              height: 200,
+              width: AwsScreenSize.width(100),
+              child: FadeInImage(
+                  placeholder: AssetImage('assets/images/loading.gif'),
+                  image: NetworkImage('https://picsum.photos/500/300'))),
+          title: const Text(
+            'Your video has been uploaded!',
+            textAlign: TextAlign.center,
+          ),
+          titlePadding: const EdgeInsets.symmetric(horizontal: 25),
+          backgroundColor: Colors.white,
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text("""You' re video has finished uploading and is livo."""),
+              Row(
+                children: [
+                  SizedBox(
+                      width: AwsScreenSize.width(28),
+                      height: 39,
+                      child: TextField(
+                        decoration: InputDecoration(
+                            label: Text('untitle.com/total/promo'),
+                            border: OutlineInputBorder()),
+                      )),
+                  SizedBox(
+                    width: AwsScreenSize.width(35),
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.link,
+                            color: Colors.blue,
+                          ),
+                          Text(
+                            "Copy Link",
+                            style: TextStyle(color: Colors.blue),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          actionsAlignment: MainAxisAlignment.center,
+          actionsPadding: const EdgeInsets.all(0),
+          actions: [
+            SizedBox(
+              width: AwsScreenSize.width(35),
+              child: OutlinedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text(
+                  "Skip",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: AwsScreenSize.width(35),
+              child: OutlinedButton(
+                onPressed: () {},
+                style: const ButtonStyle(
+                  backgroundColor:
+                      MaterialStatePropertyAll<Color>(Colors.purple),
+                ),
+                child: const Text(
+                  "Next",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,7 +211,7 @@ will be able to edit this post and republish changes."""),
             ),
             ElevatedButton(
               onPressed: () {
-                showMyAlert(context);
+                showMyAlert3(context);
               },
               child: const Text("Alert 3"),
             ),
